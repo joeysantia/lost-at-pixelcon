@@ -1,5 +1,5 @@
 import React, { createContext } from "react"
 
- const NameContext = createContext('')
+ const NameContext = createContext({})
 
  export default NameContext
