@@ -1,8 +1,8 @@
 import format from "date-fns/format";
-import { addScore } from "./firebase";
+import { addScore, getScores } from "./firebase";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import CharArrayContext from "Char";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CharArrayContext from "./CharArrayContext";
 import IsGameOverContext from "./IsGameOverContext";
 import NameContext from "./NameContext";
 import TimeContext from "./TimeContext";
@@ -56,6 +56,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
+        <Routes>
         <Route
           path="/"
           element={
@@ -90,6 +91,7 @@ export default function App() {
             </>
           }
           />
+          </Routes>
       </CharArrayContext.Provider>
     </BrowserRouter>
   );
