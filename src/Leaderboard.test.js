@@ -48,11 +48,17 @@ describe('Leaderboard', () => {
     })
 
 
-    it.skip('renders scores in order from fastest to slowest', async () => {
+    it('renders scores in order from fastest to slowest', async () => {
         await act(async () => await render(<Leaderboard />))
-        //let times = screen.getAllByRole("img")
+        
+
         /**
-         * look up how to get the children of a node (table)
+         * if the rows below exist with those names,
+         * then that means Waluigi (the fastest) is rendered
+         * in first place, and Luigi (the second fastest) is
+         * rendered in second place 
          */
+        expect(screen.getByRole("row", { name: "1 Waluigi 80 Feb 12, 2023"})).toBeInTheDocument()
+        expect(screen.getByRole("row", { name: "2 Luigi 110 Mar 4, 2023"})).toBeInTheDocument()
     })
 })

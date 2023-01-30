@@ -17,17 +17,17 @@ export default function App() {
   const [charArray, setCharArray] = useState([
     {
       name: "",
-      location: {},
+      location: [],
       hasBeenFound: false,
     },
     {
       name: "",
-      location: {},
+      location: [],
       hasBeenFound: false,
     },
     {
       name: "",
-      location: {},
+      location: [],
       hasBeenFound: false,
     },
   ]);
