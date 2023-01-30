@@ -13,6 +13,7 @@ import Level from "./Level";
 import Leaderboard from "./Leaderboard";
 
 export default function App() {
+  
   const [charArray, setCharArray] = useState([
     {
       name: "",
@@ -52,7 +53,6 @@ export default function App() {
       }
     }
   }
-
   return (
     <BrowserRouter>
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
