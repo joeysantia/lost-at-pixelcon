@@ -9,13 +9,20 @@ export default function Clock() {
     const [isGameOver, setIsGameOver] = useContext(IsGameOver)
     const [time, setTime] = useContext(TimeContext)
 
+
     useEffect(() => {
 
-        const interval = setInterval(() => increment(), 1000)
+        if (!intervalId) {
+            let intervalId = setInterval(() => {
+                increment()}
+                , 1000)
+            setIntervalId(intervalId)        
+        }
+        
 
-        return () => {
-            clearInterval(interval)
-            setTime(counter)
+        return function sendInfo() {
+                clearInterval(intervalId)
+                if (counter > 0) setTime(counter)
         }
     }, [])
 
@@ -23,18 +30,9 @@ export default function Clock() {
         setCounter(counter => counter + 1)
     }
 
-    function startTimer() {
-        intervalId = setInterval(increment(), 1000)
-        //setIntervalId(intervalId)
-    }
-
-    function stopTimer() {
-        clearInterval(intervalId)
-    }
-
     return (
         <div>
-            
+
             <h2>
                 {formatTime(counter)}
             </h2>
