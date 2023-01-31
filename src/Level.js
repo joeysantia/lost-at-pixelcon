@@ -3,6 +3,7 @@ import Dropdown from "./Dropdown";
 import { useState, useContext, useEffect } from "react";
 
 export default function Level() {
+    return null 
     const [isDropdownRendered, setIsDropdownRendered] = useState(false)
     const [target, setTarget] = useState(null)
     const [coords, setCoords] = useState(coords)

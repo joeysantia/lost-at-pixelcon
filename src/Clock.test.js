@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import IsGameOverContext from "./IsGameOverContext";
 import TimeContext from "./TimeContext";
 import Clock from "./Clock";
+import { shallow } from "enzyme";
 
 describe("Clock", () => {
   let [isGameOver, setIsGameOver] = [false, jest.fn(() => {
@@ -22,18 +23,14 @@ describe("Clock", () => {
     expect(screen).toMatchSnapshot();
   });
 
-  it("starts the timer upon rendering", () => {
-    //look up how to mock a function that is defined within a component
-    let startTimer = jest.fn();
-
-    render(
-      <IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
+  it.only("starts the timer upon rendering", () => {
+    render(<IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
         <TimeContext.Provider value={[time, setTime]}>
           <Clock />
         </TimeContext.Provider>
-      </IsGameOverContext.Provider>
-    );
-    expect(startTimer).toHaveBeenCalled();
+      </IsGameOverContext.Provider>)
+    //if the text below appears, then the timer has not started
+    expect(screen.queryByText("00 : 00 : 00")).not.toBeInTheDocument()
   });
 
   it.skip("stops the timer when IsGameOverContext changes", () => {

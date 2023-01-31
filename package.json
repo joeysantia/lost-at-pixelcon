@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "date-fns": "^2.29.3",
+    "enzyme": "^3.11.0",
     "uniqid": "^5.4.0"
   }
 }

@@ -11,6 +11,7 @@ import Header from "./Header";
 import Home from "./Home";
 import Level from "./Level";
 import Leaderboard from "./Leaderboard";
+import Clock from "./Clock";
 
 export default function App() {
   
@@ -53,6 +54,7 @@ export default function App() {
       }
     }
   }
+  
   return (
     <BrowserRouter>
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
