@@ -7,7 +7,7 @@ export default function Level() {
   const [isDropdownRendered, setIsDropdownRendered] = useState(false);
   const [target, setTarget] = useState(null);
   const [coords, setCoords] = useState([]);
-  const [didPlayerWin, setDidPlayerWin] = useState(false);
+  const [playerWon, setPlayerWon] = useState(false);
 
   const [charArray, setCharArray] = useContext(CharArrayContext);
 
@@ -16,9 +16,9 @@ export default function Level() {
       if (!char.hasBeenFound) {
         return;
       }
-      setDidPlayerWin(true);
-      console.log('happy path')
     }
+    setPlayerWon(true);
+    console.log("happy path");
   }, [isDropdownRendered]);
 
   function generateDropdown(e) {
@@ -36,23 +36,22 @@ export default function Level() {
           setIsDropdownRendered={setIsDropdownRendered}
         />
       )}
-      {didPlayerWin && <EnterName />}
+      {playerWon && <EnterName />}
       <img
         src="#"
         alt="background"
         useMap="level"
         onClick={(e) => generateDropdown(e)}
-      ></img>
+      />
       <map name="level">
         {charArray.map((char, i) => {
-          const [x, y, radius] = char.coords;
           return (
             <area
               key={i}
               alt="target"
               id={char.name}
               shape="circle"
-              coords={`${x}, ${y}, ${radius}`}
+              coords={char.coords}
             />
           );
         })}

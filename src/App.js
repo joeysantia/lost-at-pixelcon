@@ -1,34 +1,33 @@
 import format from "date-fns/format";
-import { addScore, getScores } from "./firebase";
+import { addScore } from "./components/firebase";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import CharArrayContext from "./CharArrayContext";
-import IsGameOverContext from "./IsGameOverContext";
-import NameContext from "./NameContext";
-import TimeContext from "./TimeContext";
 import "./App.css";
-import Header from "./Header";
-import Home from "./Home";
-import Level from "./Level";
-import Leaderboard from "./Leaderboard";
-import Clock from "./Clock";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Level from "./components/Level";
+import { CharArrayContext } from "./components/CharArrayContext";
+import Leaderboard from "./components/Leaderboard";
+import { IsGameOverContext } from "./components/IsGameOverContext";
+import { NameContext } from "./components/NameContext";
+import { TimeContext } from "./components/TimeContext";
 
 export default function App() {
   
   const [charArray, setCharArray] = useState([
     {
-      name: "",
-      location: [],
+      name: "Reptar",
+      coords: "",
       hasBeenFound: false,
     },
     {
-      name: "",
-      location: [],
+      name: "Benson",
+      coords: "",
       hasBeenFound: false,
     },
     {
-      name: "",
-      location: [],
+      name: "Patrick",
+      coords: "",
       hasBeenFound: false,
     },
   ]);
@@ -37,11 +36,13 @@ export default function App() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    sendScore();
+    if (name && time) {
+      sendScore();
+
+    }
   }, [name, time]);
 
   async function sendScore() {
-    if (time && name) {
       let newScore = {
         name,
         time,
@@ -51,7 +52,6 @@ export default function App() {
         await addScore(newScore);
       } catch(err) {
         console.error(err)
-      }
     }
   }
   
