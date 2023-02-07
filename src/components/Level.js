@@ -2,6 +2,8 @@ import { CharArrayContext } from "./CharArrayContext";
 import Dropdown from "./Dropdown";
 import { useState, useContext, useEffect } from "react";
 import EnterName from "./EnterName";
+import Background from "../img/background.png"
+import "./Level.css"
 
 export default function Level() {
   const [isDropdownRendered, setIsDropdownRendered] = useState(false);
@@ -23,7 +25,7 @@ export default function Level() {
 
   function generateDropdown(e) {
     setTarget(e.target);
-    setCoords([e.offsetX, e.offsetY]);
+    setCoords([e.nativeEvent.layerX, e.nativeEvent.layerY]);
     setIsDropdownRendered(true);
   }
 
@@ -38,7 +40,7 @@ export default function Level() {
       )}
       {playerWon && <EnterName />}
       <img
-        src="#"
+        src={Background}
         alt="background"
         useMap="level"
         onClick={(e) => generateDropdown(e)}
