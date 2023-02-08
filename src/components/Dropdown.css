@@ -1,0 +1,30 @@
+#dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#dropdown img {
+    height: 40px;
+}
+
+#dropdown li{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    align-items: center;
+    width: 150px;
+    background: white;
+    border-bottom: 2px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#dropdown li:hover {
+    opacity: 0.9;
+}
+
+#dropdown p {
+    margin: 0;
+}

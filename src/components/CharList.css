@@ -1,0 +1,14 @@
+#char-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+}
+
+#char-list img {
+    height: 60px;
+}
+
+.inactive {
+    opacity: 0.2;
+}
