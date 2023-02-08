@@ -1,21 +1,36 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 
 describe('App', () => {
   //integration tests
-  it.skip("renders on the Welcome page", () => {
 
+
+  //all routing tests should be here 
+  it("renders on the Home page", () => {
+    render(<App />)
+    expect(screen.getByText("Start")).toBeInTheDocument()
   })
 
-  it.skip('routes to the Level when the start button is clicked', () => {
-
+  it('routes to the Level when the start button is clicked', () => {
+    render(<App />)
+    userEvent.click(screen.getByRole("button", { name: "Start"}))
+    expect(screen.getByRole("img", {name: "background"})).toBeInTheDocument()
   })
 
-  it.skip('routes back to the Welcome page when the logo is clicked', () => {
-
+  it('routes back to the Home page when the logo is clicked', () => {
+    render(<App />)
+    userEvent.click(screen.getByRole("link", { name: "Lost at PixelCon"}))
+    expect(screen.getByText("Start")).toBeInTheDocument()
   })
+
   
-  it.skip('correctly renders a new high score', () => {
+  //wait until every other test passes
+  it.skip('correctly plays through a full game', () => {
     
+  })
+
+  it.skip('routes back to the game when "Play again?" is clicked', () => {
+
   })
 })
