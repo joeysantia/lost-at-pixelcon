@@ -2,11 +2,10 @@ import { render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { MemoryRouter } from "react-router"
 import EnterName from "./EnterName"
-import NameContext from "./NameContext"
+import { NameContext }  from "./NameContext"
 describe('EnterName', () => {
 
     let name = ''
-    //this will just return the inputted name
     let setName = jest.fn()
     
     
@@ -49,14 +48,5 @@ describe('EnterName', () => {
         </NameContext.Provider>, {wrapper: MemoryRouter})
         userEvent.click(screen.getByRole("button"))
         expect(setName.mock.calls).toHaveLength(0)
-    })
-
-    //integration tests
-    it.skip('routes to Leaderboard when button is clicked', () => {
-
-    })
-
-    it.skip('updates name when button is clicked', () => {
-
     })
 })

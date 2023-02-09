@@ -6,7 +6,7 @@ import Dropdown from "./Dropdown";
 describe("Dropdown", () => {
   let coords = [100, 150];
   //this needs to be a mock EventTarget
-  let target = new Node();
+  let target = {}
   let setIsDropdownRendered = jest.fn();
   let charArray = [
     {
@@ -60,6 +60,7 @@ describe("Dropdown", () => {
 
   it.only("returns true if the dropdown is within a target", () => {
     //gotta figure out how to capture the eventTarget of userEvent, or to mock it
+    target = 
     render(
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
         <img

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import NameContext from "./NameContext"
+import { NameContext } from "./NameContext"
 
 export default function EnterName() {
     const [input, setInput] = useState('')
@@ -15,6 +15,8 @@ export default function EnterName() {
 
     function handleOnSubmit(e) {
         e.preventDefault()
+        console.log('i submitted', input.length)
+        console.log([name, setName])
         if (input.length > 0) {
             setName(input)
         }

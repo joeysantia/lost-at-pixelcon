@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Leaderboard renders with a header and table 1`] = `
+exports[`Header renders a navbar and a heading 1`] = `
 Object {
   "debug": [Function],
   "findAllByAltText": [Function],

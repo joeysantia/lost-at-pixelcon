@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { render, screen } from "@testing-library/react";
 import { CharArrayContext } from "./CharArrayContext";
 import CharList from "./CharList";
@@ -6,16 +8,19 @@ let charArray = [
   {
     name: "Reptar",
     coords: "",
+    img: { src: "#" },
     hasBeenFound: false,
   },
   {
     name: "Benson",
     coords: "",
+    img: { src: "#" },
     hasBeenFound: false,
   },
   {
     name: "Patrick",
     coords: "",
+    img: { src: "#" },
     hasBeenFound: false,
   },
 ];
@@ -47,16 +52,19 @@ describe("CharList", () => {
         {
           name: "Reptar",
           coords: "",
+          img: { src: "#" },
           hasBeenFound: false,
         },
         {
           name: "Benson",
           coords: "",
+          img: { src: "#" },
           hasBeenFound: true,
         },
         {
           name: "Patrick",
           coords: "",
+          img: { src: "#" },
           hasBeenFound: false,
         },
       ];

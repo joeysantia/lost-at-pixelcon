@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EnterName renders with a heading, paragraph, and input 1`] = `
+exports[`Level renders an image and areas 1`] = `
 Object {
   "debug": [Function],
   "findAllByAltText": [Function],

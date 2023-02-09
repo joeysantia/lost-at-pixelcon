@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { IsGameOverContext } from "./IsGameOverContext";
 import Clock from "./Clock";
-import { TimeContext } from "./TimeContext";
-import { CharArrayContext } from "./CharArrayContext";
 import { Link } from "react-router-dom";
+import CharList from "./CharList";
+import "./Header.css"
 const Header = ({ mode }) => {
 
   return (
@@ -12,9 +10,10 @@ const Header = ({ mode }) => {
         <Link to="/">
           <h1>Lost at PixelCon</h1>
         </Link>
-        {mode === "level" && <Clock />}
-        {mode === "leaderboard" && <Link to="/l1">Play again?</Link>}
       </div>
+        {mode === "level" && <Clock />}
+        {mode === "level" && <CharList />}
+        {mode === "leaderboard" && <Link to="/l1">Play again?</Link>}
     </nav>
   );
 };
