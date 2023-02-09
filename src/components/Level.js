@@ -20,11 +20,10 @@ export default function Level() {
       }
     }
     setPlayerWon(true);
-    console.log("happy path");
   }, [isDropdownRendered]);
 
   function generateDropdown(e) {
-    setTarget(e.target);
+    setTarget(e.nativeEvent.target);
     setCoords([e.nativeEvent.layerX, e.nativeEvent.layerY]);
     setIsDropdownRendered(true);
   }
@@ -42,18 +41,20 @@ export default function Level() {
       <img
         src={Background}
         alt="background"
-        useMap="level"
+        useMap="#l1"
         onClick={(e) => generateDropdown(e)}
       />
-      <map name="level">
+      <map id="l1" name="l1">
         {charArray.map((char, i) => {
           return (
             <area
               key={i}
-              alt="target"
-              id={char.name}
               shape="circle"
               coords={char.coords}
+              alt="target"
+              title={char.name}
+              id={char.name}
+              onClick={(e) => generateDropdown(e)}
             />
           );
         })}

@@ -9,17 +9,20 @@ describe("Level", () => {
     [
       {
         name: "Reptar",
-        coords: [],
+        coords: "703, 334, 30",
+        img: { src: "#" },
         hasBeenFound: false,
       },
       {
         name: "Benson",
-        coords: [],
+        coords: "542, 166, 25",
+        img: { src: "#" },
         hasBeenFound: false,
       },
       {
         name: "Patrick",
-        coords: [],
+        coords: "1155, 219, 25",
+        img: { src: "#" },
         hasBeenFound: false,
       },
     ],
@@ -40,17 +43,20 @@ describe("Level", () => {
     let allCharsFound = [
       {
         name: "Reptar",
-        coords: [],
+        coords: "703, 334, 30",
+        img: { src: "#" },
         hasBeenFound: true,
       },
       {
         name: "Benson",
-        coords: [],
+        coords: "542, 166, 25",
+        img: { src: "#" },
         hasBeenFound: true,
       },
       {
         name: "Patrick",
-        coords: [],
+        coords: "1155, 219, 25",
+        img: { src: "#" },
         hasBeenFound: true,
       },
     ];
