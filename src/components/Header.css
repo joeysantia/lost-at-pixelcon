@@ -2,12 +2,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
     padding: 12px 24px;
+    height: 135px;
     font-size: 16px;
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     top: 0;
     right: 0;
+    left: 0;
     background: white;
 }
 
