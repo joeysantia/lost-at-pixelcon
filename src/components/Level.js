@@ -2,15 +2,15 @@ import { CharArrayContext } from "./CharArrayContext";
 import Dropdown from "./Dropdown";
 import { useState, useContext, useEffect } from "react";
 import EnterName from "./EnterName";
-import Background from "../img/background.png"
-import "./Level.css"
+import Background from "../img/background.png";
+import "./Level.css";
+import { IsGameOverContext } from "./IsGameOverContext";
 
 export default function Level() {
   const [isDropdownRendered, setIsDropdownRendered] = useState(false);
   const [target, setTarget] = useState(null);
   const [coords, setCoords] = useState([]);
-  const [playerWon, setPlayerWon] = useState(false);
-
+  const [isGameOver, setIsGameOver] = useContext(IsGameOverContext);
   const [charArray, setCharArray] = useContext(CharArrayContext);
 
   useEffect(() => {
@@ -19,10 +19,20 @@ export default function Level() {
         return;
       }
     }
-    setPlayerWon(true);
+    setIsGameOver(true);
   }, [isDropdownRendered]);
 
   function generateDropdown(e) {
+    console.log(target, e.nativeEvent.target);
+    if (
+      e.nativeEvent.layerX === coords[0] &&
+      e.nativeEvent.layerY === coords[1] &&
+      isDropdownRendered
+    ) {
+      console.log("this ran");
+      setIsDropdownRendered(false);
+      return;
+    }
     setTarget(e.nativeEvent.target);
     setCoords([e.nativeEvent.layerX, e.nativeEvent.layerY]);
     setIsDropdownRendered(true);
@@ -37,7 +47,8 @@ export default function Level() {
           setIsDropdownRendered={setIsDropdownRendered}
         />
       )}
-      {playerWon && <EnterName />}
+
+      {isGameOver && <EnterName />}
       <img
         src={Background}
         alt="background"
