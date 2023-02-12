@@ -11,27 +11,27 @@ import Leaderboard from "./components/Leaderboard";
 import { IsGameOverContext } from "./components/IsGameOverContext";
 import { NameContext } from "./components/NameContext";
 import { TimeContext } from "./components/TimeContext";
-import Patrick from "./img/patrick.png"
-import Benson from "./img/benson.webp"
-import Reptar from "./img/reptar.webp"
+import Patrick from "./img/patrick.png";
+import Benson from "./img/benson.webp";
+import Reptar from "./img/reptar.webp";
 export default function App() {
   const [charArray, setCharArray] = useState([
     {
       name: "Reptar",
       coords: "703,334,30",
-      img: {Reptar},
+      img: { Reptar },
       hasBeenFound: false,
     },
     {
       name: "Benson",
       coords: "542,166,25",
-      img: {Benson},
+      img: { Benson },
       hasBeenFound: false,
     },
     {
       name: "Patrick",
       coords: "1155,219,25",
-      img: {Patrick},
+      img: { Patrick },
       hasBeenFound: false,
     },
   ]);
@@ -40,17 +40,19 @@ export default function App() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    console.log('the effect ran')
-    if (name && time) {
-      sendScore();
-    }
+    (async () => {
+      if (name && time) {
+        console.log("happy path app");
+        await sendScore();
+      }
+    })();
   }, [name, time]);
 
   async function sendScore() {
     let newScore = {
       name,
       time,
-      date: format(new Date(), "MMM Do, YYYY"),
+      date: format(new Date(), "MMM Do, yyyy"),
     };
     try {
       await addScore(newScore);
@@ -58,10 +60,11 @@ export default function App() {
       console.error(err);
     }
   }
-
+  console.log([name, time])
   return (
     <BrowserRouter>
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
+        <IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
         <Routes>
           <Route
             path="/"
@@ -76,14 +79,12 @@ export default function App() {
             path="/l1"
             element={
               <>
-                <IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
                   <NameContext.Provider value={[name, setName]}>
                     <TimeContext.Provider value={[time, setTime]}>
                       <Header mode="level" />
                       <Level />
                     </TimeContext.Provider>
                   </NameContext.Provider>
-                </IsGameOverContext.Provider>
               </>
             }
           />
@@ -97,6 +98,7 @@ export default function App() {
             }
           />
         </Routes>
+        </IsGameOverContext.Provider>
       </CharArrayContext.Provider>
     </BrowserRouter>
   );

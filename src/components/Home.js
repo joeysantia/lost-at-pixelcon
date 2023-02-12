@@ -6,11 +6,14 @@ import Patrick from "../img/patrick.png";
 import Benson from "../img/benson.webp";
 import Reptar from "../img/reptar.webp";
 import "./Home.css"
+import { IsGameOverContext } from "./IsGameOverContext";
 
 export default function Home() {
     const [charArray, setCharArray] = useContext(CharArrayContext)
+    const [isGameOver, setIsGameOver] = useContext(IsGameOverContext)
 
     useEffect(() => {
+        setIsGameOver(false)
         setCharArray([
             {
               name: "Reptar",
