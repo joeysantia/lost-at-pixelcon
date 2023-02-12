@@ -1,0 +1,39 @@
+#enter-name {
+    position: fixed;
+    z-index: 98;
+    background: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: min-content;
+    width: min-content;
+    padding: 16px 48px; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 8px;
+    box-shadow: 4px;
+}
+
+#enter-name * {
+    width: 200px;
+}
+
+#enter-name h2 {
+    margin: 0;
+}
+
+#enter-name button a {
+    position: relative;
+    display: block;
+    z-index: 99;
+    width: 200px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+}
