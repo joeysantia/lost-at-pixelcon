@@ -25,20 +25,20 @@ describe('EnterName', () => {
     })
 
     it('setName will fire when button is clicked', () => {
-        render(<NameContext.Provider value={[name, setName]}>
+        const { unmount } = render(<NameContext.Provider value={[name, setName]}>
             <EnterName />
         </NameContext.Provider>, {wrapper: MemoryRouter})
         userEvent.type(screen.getByRole("textbox"), "Jeremy")
-        userEvent.click(screen.getByRole("button"))
+        unmount()
         expect(setName.mock.calls).toHaveLength(1)
     })
 
-    it('setName will be called with the current input state', () => {
-        render(<NameContext.Provider value={[name, setName]}>
+    it('setName will be called upon unmounting and with the current input state', () => {
+        const { unmount } = render(<NameContext.Provider value={[name, setName]}>
             <EnterName />
         </NameContext.Provider>, {wrapper: MemoryRouter})
         userEvent.type(screen.getByRole("textbox"), "Jeremy")
-        userEvent.click(screen.getByRole("button"))
+        unmount()
         expect(setName.mock.calls[0][0]).toEqual("Jeremy")
     })
 
