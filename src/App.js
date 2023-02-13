@@ -40,64 +40,63 @@ export default function App() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    (async () => {
-      if (name && time) {
-        console.log("happy path app");
-        await sendScore();
-      }
-    })();
+    if (name && time) {
+      console.log([name, time]);
+      sendScore();
+    }
   }, [name, time]);
 
   async function sendScore() {
     let newScore = {
       name,
       time,
-      date: format(new Date(), "MMM Do, yyyy"),
+      date: format(new Date(), "MMM do, yyyy"),
     };
     try {
       await addScore(newScore);
+      console.log("i sent a score!");
     } catch (err) {
       console.error(err);
     }
   }
-  console.log([name, time])
+
   return (
     <BrowserRouter>
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
         <IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Header mode="home" />
-                <Home />
-              </>
-            }
-          />
-          <Route
-            path="/l1"
-            element={
-              <>
-                  <NameContext.Provider value={[name, setName]}>
-                    <TimeContext.Provider value={[time, setTime]}>
+          <NameContext.Provider value={[name, setName]}>
+            <TimeContext.Provider value={[time, setTime]}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Header mode="home" />
+                      <Home />
+                    </>
+                  }
+                />
+                <Route
+                  path="/l1"
+                  element={
+                    <>
                       <Header mode="level" />
                       <Level />
-                    </TimeContext.Provider>
-                  </NameContext.Provider>
-              </>
-            }
-          />
-          <Route
-            path="/leaderboard"
-            element={
-              <>
-                <Header mode="leaderboard" />
-                <Leaderboard name={name} />
-              </>
-            }
-          />
-        </Routes>
+                    </>
+                  }
+                />
+                <Route
+                  path="/leaderboard"
+                  element={
+                    <>
+                      <Header mode="leaderboard" />
+                      <Leaderboard name={name} />
+                    </>
+                  }
+                />
+              </Routes>
+            </TimeContext.Provider>
+          </NameContext.Provider>
         </IsGameOverContext.Provider>
       </CharArrayContext.Provider>
     </BrowserRouter>
