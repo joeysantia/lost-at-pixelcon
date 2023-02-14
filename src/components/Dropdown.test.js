@@ -2,11 +2,9 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { CharArrayContext } from "./CharArrayContext";
 import Dropdown from "./Dropdown";
-
 describe("Dropdown", () => {
   let coords = [100, 150];
-  //this needs to be a mock EventTarget
-  let target = {}
+  let target = null;
   let setIsDropdownRendered = jest.fn();
   let charArray = [
     {
@@ -58,19 +56,24 @@ describe("Dropdown", () => {
     expect(screen.getByRole("list")).toHaveStyle("top: 150px");
   });
 
-  it.only("returns true if the dropdown is within a target", () => {
+  it("dropdown will render when user clicks on a target", () => {
     //gotta figure out how to capture the eventTarget of userEvent, or to mock it
-    target = 
     render(
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
         <img
           src="#"
           alt="alt"
           useMap="#map"
-          style={{ height: "1000px", width: "1000px" }}
+          style={{ height: "100vh", width: "100vw" }}
         ></img>
         <map id="map">
-          <area id="Reptar" alt="Reptar" coords={coords} shape="circle"></area>
+          <area
+            title="Reptar-area"
+            id="Reptar"
+            alt="Reptar"
+            coords={coords}
+            shape="circle"
+          ></area>
         </map>
         <Dropdown
           coords={coords}
@@ -79,11 +82,69 @@ describe("Dropdown", () => {
         />
       </CharArrayContext.Provider>
     );
-    userEvent.click(screen.getByRole("img", { name: "Reptar" }));
+    userEvent.click(screen.getByTitle("Reptar"));
     expect(setIsDropdownRendered).toHaveBeenCalled();
   });
 
-  it.skip("returns false if the target is outside of a target element", () => {});
+  it("does not mutate charArray if the target is outside of a target element", () => {
+    render(
+      <CharArrayContext.Provider value={[charArray, setCharArray]}>
+        <img
+          src="#"
+          alt="alt"
+          useMap="#map"
+          style={{ height: "100vh", width: "100vw" }}
+        ></img>
+        <div title="not-target"></div>
+        <map id="map">
+          <area
+            title="Reptar-area"
+            id="Reptar"
+            alt="Reptar"
+            coords={coords}
+            shape="circle"
+          ></area>
+        </map>
+        <Dropdown
+          coords={coords}
+          target={target}
+          setIsDropdownRendered={setIsDropdownRendered}
+        />
+      </CharArrayContext.Provider>
+    );
+    userEvent.click(screen.getByTitle("not-target"));
+    userEvent.click(screen.getByRole("listitem", { name: "Reptar" }));
+    expect(charArray[0].hasBeenFound).toBeFalsy();
+  });
 
-  it.skip("mutates the charArray if the correct character is selected", () => {});
+  it("mutates the charArray if the correct character is selected", () => {
+    render(
+      <CharArrayContext.Provider value={[charArray, setCharArray]}>
+        <img
+          src="#"
+          alt="alt"
+          useMap="#map"
+          style={{ height: "100vh", width: "100vw" }}
+        ></img>
+        <div title="not-target"></div>
+        <map id="map">
+          <area
+            title="Reptar-area"
+            id="Reptar"
+            alt="Reptar"
+            coords={coords}
+            shape="circle"
+          ></area>
+        </map>
+        <Dropdown
+          coords={coords}
+          target={target}
+          setIsDropdownRendered={setIsDropdownRendered}
+        />
+      </CharArrayContext.Provider>
+    );
+    userEvent.click(screen.getByTitle("Reptar-area"));
+    userEvent.click(screen.getByRole("listitem", { name: "Reptar" }));
+    expect(charArray[0].hasBeenFound).toBeFalsy();
+  });
 });
