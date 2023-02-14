@@ -56,9 +56,12 @@ describe('Leaderboard', () => {
          * if the rows below exist with those names,
          * then that means Waluigi (the fastest) is rendered
          * in first place, and Luigi (the second fastest) is
-         * rendered in second place 
+         * rendered in second place.
+         * 
+         * The name is a combination of the information
+         * in each row's cells (place, name, time, date) 
          */
-        expect(screen.getByRole("row", { name: "1 Waluigi 80 Feb 12, 2023"})).toBeInTheDocument()
-        expect(screen.getByRole("row", { name: "2 Luigi 110 Mar 4, 2023"})).toBeInTheDocument()
+        expect(screen.getByRole("row", { name: "1 Waluigi 00 : 01 : 20 Feb 12, 2023"})).toBeInTheDocument()
+        expect(screen.getByRole("row", { name: "2 Luigi 00 : 01 : 50 Mar 4, 2023"})).toBeInTheDocument()
     })
 })

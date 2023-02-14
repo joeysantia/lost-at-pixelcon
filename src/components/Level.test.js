@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { CharArrayContext } from "./CharArrayContext";
+import { IsGameOverContext } from "./IsGameOverContext";
 import Level from "./Level";
 import { NameContext } from "./NameContext";
 
@@ -28,12 +29,14 @@ describe("Level", () => {
     ],
     jest.fn(),
   ];
+  let [isGameOver, setIsGameOver] = [false, jest.fn()];
 
-  //unit tests
   it("renders an image and areas", () => {
     render(
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
-        <Level />
+        <IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
+          <Level />
+        </IsGameOverContext.Provider>
       </CharArrayContext.Provider>
     );
     expect(screen).toMatchSnapshot();
@@ -63,7 +66,9 @@ describe("Level", () => {
     render(
       <CharArrayContext.Provider value={[allCharsFound, setCharArray]}>
         <NameContext.Provider value={["", jest.fn()]}>
-          <Level />
+          <IsGameOverContext.Provider value={[true, setIsGameOver]}>
+            <Level />
+          </IsGameOverContext.Provider>
         </NameContext.Provider>
       </CharArrayContext.Provider>
     );
@@ -72,11 +77,12 @@ describe("Level", () => {
     expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
   });
 
-  //integration tests
   it("generates a Dropdown element when the image is clicked", () => {
     render(
       <CharArrayContext.Provider value={[charArray, setCharArray]}>
-         <Level />
+        <IsGameOverContext.Provider value={[isGameOver, setIsGameOver]}>
+          <Level />
+        </IsGameOverContext.Provider>
       </CharArrayContext.Provider>
     );
     userEvent.click(screen.getByRole("img"));
