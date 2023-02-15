@@ -10,15 +10,27 @@ nav {
     top: 0;
     right: 0;
     left: 0;
-    background: white;
+    background: rgb(0, 204, 204);
 }
 
-h1 {
+nav h1 {
     padding: 0;
     margin: 0;
 }
 
-a {
+nav a {
     text-decoration: none;
     color: black;
+}
+
+#play-again {
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 4px 12px;
+    transition: 0.3s;
+}
+
+#play-again:hover {
+    background: black; 
+    color: white;
 }
