@@ -18,7 +18,7 @@ describe("Home", () => {
   let setName = jest.fn();
   let setTime = jest.fn();
   let setIsGameOver = jest.fn();
-  //unit tests
+
   it("renders with a heading, paragraph, and CharList", () => {
     render(
       <CharArrayContext.Provider value={[[], setCharArray]}>

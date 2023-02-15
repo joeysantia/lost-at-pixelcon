@@ -9,31 +9,19 @@ export default function EnterName() {
     let inputRef = useRef();
     inputRef.current = input;
     useEffect(() => {
-        /*document.body.style = {
-            position: "fixed",
-            overflow: "hidden"
-        }*/
+        
 
         return () => {
-            console.log(inputRef.current)
-            console.log('entername cleanup')
             setName(inputRef.current)
         }
     }, [])
-/*
-    function handleOnSubmit(e) {
-        e.preventDefault()
-        if (input.length > 0) {
-            setName(input)
-            console.log('i submitted', input)
-        }
-    }
-*/
+
     return (
         <form id="enter-name">
             <h2>You won!</h2>
             <label htmlFor="name">Enter your name to submit your time to the leaderboard.</label>
             <input id="name" name="name" type="text" required onChange={(e) => setInput(e.target.value)}></input>
+            {/* link to the leaderboard only renders if the user has entered their name */}
             {input.length > 0 ? <Link to="../leaderboard"><button>Submit</button></Link> : <button>Submit</button>}
         </form>
     )

@@ -9,7 +9,6 @@ describe('EnterName', () => {
     let setName = jest.fn()
     
     
-    //unit tests 
     it('renders with a heading, paragraph, and input', () => {
         render(<NameContext.Provider value={[name, setName]}>
                 <EnterName />
@@ -24,7 +23,7 @@ describe('EnterName', () => {
         expect(screen.getByRole("textbox").textContent.length).toEqual(0)
     })
 
-    it('setName will fire when button is clicked', () => {
+    it('setName will fire when component unmounts', () => {
         const { unmount } = render(<NameContext.Provider value={[name, setName]}>
             <EnterName />
         </NameContext.Provider>, {wrapper: MemoryRouter})

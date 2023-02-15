@@ -15,6 +15,7 @@ import Patrick from "./img/patrick.png";
 import Benson from "./img/benson.webp";
 import Reptar from "./img/reptar.webp";
 export default function App() {
+  //initializing state, which will be passed down as context
   const [charArray, setCharArray] = useState([
     {
       name: "Reptar",
@@ -39,9 +40,12 @@ export default function App() {
   const [time, setTime] = useState(0);
   const [name, setName] = useState("");
 
+  /**
+   * when name and time are defined by winning 
+   * the game, they will be submitted as a score
+   */
   useEffect(() => {
     if (name && time) {
-      console.log([name, time]);
       sendScore();
     }
   }, [name, time]);
@@ -54,7 +58,6 @@ export default function App() {
     };
     try {
       await addScore(newScore);
-      console.log("i sent a score!");
     } catch (err) {
       console.error(err);
     }

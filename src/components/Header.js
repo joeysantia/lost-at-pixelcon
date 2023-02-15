@@ -13,7 +13,7 @@ const Header = ({ mode }) => {
       </div>
         {mode === "level" && <Clock />}
         {mode === "level" && <CharList />}
-        {mode === "leaderboard" && <Link to="/l1">Play again?</Link>}
+        {mode === "leaderboard" && <Link id='play-again' to="/">Play again?</Link>}
     </nav>
   );
 };

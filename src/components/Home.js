@@ -15,10 +15,15 @@ export default function Home() {
     const [isGameOver, setIsGameOver] = useContext(IsGameOverContext)
     const [name, setName] = useContext(NameContext)
     const [time, setTime] = useContext(TimeContext)
+    
+    /**
+     * checks if the context values are at their
+     * initial values and, if not, re-initializes them
+     */
     useEffect(() => {
         if (isGameOver) setIsGameOver(false)
         if (name.length > 0) setName('')
-        if (time > 0)setTime(0)        
+        if (time > 0) setTime(0)        
         
         for (const char of charArray) {
           if (char.hasBeenFound) {
@@ -46,6 +51,7 @@ export default function Home() {
         } 
         
     }, [])
+
     return (
         <main id="home">
             <h2>Lost at PixelCon</h2>

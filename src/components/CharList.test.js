@@ -47,7 +47,6 @@ describe("CharList", () => {
 
 
   it("all chars that have been found will have inactive class", () => {
-    //look up how to find by className
     let newCharArray = [
         {
           name: "Reptar",

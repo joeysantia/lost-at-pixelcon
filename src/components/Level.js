@@ -14,6 +14,11 @@ export default function Level() {
   const [charArray, setCharArray] = useContext(CharArrayContext);
 
   useEffect(() => {
+    /**
+     * checks if the user has won the
+     * game every time that the 
+     * Dropdown component unmounts
+     */
     for (const char of charArray) {
       if (!char.hasBeenFound) {
         return;
@@ -23,16 +28,20 @@ export default function Level() {
   }, [isDropdownRendered]);
 
   function generateDropdown(e) {
-    console.log(target, e.nativeEvent.target);
+    /**
+     * if the user clicks on the same
+     * pixel twice, then the Dropdown
+     * component will unmount
+     */
     if (
       e.nativeEvent.layerX === coords[0] &&
       e.nativeEvent.layerY === coords[1] &&
       isDropdownRendered
     ) {
-      console.log("this ran");
       setIsDropdownRendered(false);
       return;
     }
+    
     setTarget(e.nativeEvent.target);
     setCoords([e.nativeEvent.layerX, e.nativeEvent.layerY]);
     setIsDropdownRendered(true);

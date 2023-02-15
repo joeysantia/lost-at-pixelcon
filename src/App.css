@@ -1,8 +1,13 @@
 @font-face {
   font-family: "Shrinkhand";
-  src: local("Shrinkhand-Regular"), url('./font/Shrikhand-Regular.ttf') format('truetype')
+  src: local("Shrinkhand-Regular"), url('./font/Shrikhand-Regular.ttf') format('truetype');
 }
 
 * {
-  font-family: "Shrinkhand"
+  font-family: "Shrinkhand";
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
 }
