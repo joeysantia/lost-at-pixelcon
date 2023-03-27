@@ -10,6 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Multiple levels
 2. Difficulty settings
 3. Formatting for mobile 
+4. Refactor the coordinates of the image map so that they are dynamic and automatically adjust based on the background image's size.
 
 
 ## Available Scripts
