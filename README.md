@@ -79,3 +79,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Image Credits
+1. Background: Tumblr.com https://25.media.tumblr.com/tumblr_mc4gtea0qZ1qahti4o1_1280.png
+2. Reptar: Darthranner83 on fandom.com: https://hero.fandom.com/wiki/Reptar?file=Reptar.png
+3. Benson: Zyriusz on Fandom.com: https://regularshow.fandom.com/wiki/Benson?file=Benson_character.png
+4. Patrick: By Nickelodeon, Fair use, https://en.wikipedia.org/w/index.php?curid=59715090
+5. Welcome screen background: pikisuperstar https://www.freepik.com/free-vector/pixel-rain-abstract-background_6148341.htm#query=pixel%20background&position=9&from_view=keyword&track=ais
