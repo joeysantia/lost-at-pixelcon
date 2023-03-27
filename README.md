@@ -1,6 +1,16 @@
-# Getting Started with Create React App
+# Lost at Pixelcon
 
+This is a photo-tagging game in the style of Where's Wally/Where's Waldo. Users search for three characters within a pixel art background and can add their names and times to a leaderboard, which is hosted by Google Firebase. This project is inspired by the Odin Project curriculum as part of their BaaS unit. 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+## Live Site: https://wheres-waldo-df5f6.firebaseapp.com/
+
+## Works In Progress
+1. Multiple levels
+2. Difficulty settings
+3. Formatting for mobile 
+
 
 ## Available Scripts
 
